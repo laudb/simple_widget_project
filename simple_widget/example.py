@@ -1,7 +1,7 @@
 import ipywidgets as widgets
 from traitlets import Unicode
 from ipywidgets import Layout, Button, Box
-
+from IPython.display import display
 
 @widgets.register
 class HelloWorld(widgets.DOMWidget):
@@ -24,4 +24,12 @@ class ListData(widgets.DOMWidget):
     _model_module = Unicode('simple_widget').tag(sync=True)
     _view_module_version = Unicode('^0.1.0').tag(sync=True)
     _model_module_version = Unicode('^0.1.0').tag(sync=True)
-    value = Unicode('List Some Data').tag(sync=True)
+
+    def show(self):
+        w = widgets.Dropdown(options = { 'One':1, 'Two':2 },
+        value = 2,
+        description = 'Number:'
+    )
+        display(w)
+
+        

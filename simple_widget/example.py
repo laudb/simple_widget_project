@@ -1,6 +1,6 @@
 import ipywidgets as widgets
 from traitlets import Unicode
-from ipywidgets import Layout, Button, Box
+from ipywidgets import Layout, Button, Box, VBox
 from IPython.display import display
 
 @widgets.register
@@ -25,11 +25,14 @@ class ListData(widgets.DOMWidget):
     _view_module_version = Unicode('^0.1.0').tag(sync=True)
     _model_module_version = Unicode('^0.1.0').tag(sync=True)
 
-    def show(self):
+    def show_dropdown(self):
         w = widgets.Dropdown(options = { 'One':1, 'Two':2 },
         value = 2,
-        description = 'Number:'
-    )
+        description = 'Number:')
         display(w)
 
-        
+    def show_box(self):
+        sample_words = ['one', 'two', 'three', 'four']
+        items = [Button(description=w) for w in sample_words]
+        list_box = VBox([items[0], items[1], items[2]])
+        display(list_box)

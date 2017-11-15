@@ -1,7 +1,9 @@
 import ipywidgets as widgets
+import pandas as pd
 from traitlets import Unicode
 from ipywidgets import Layout, Button, Box, VBox
 from IPython.display import display
+
 
 @widgets.register
 class HelloWorld(widgets.DOMWidget):
@@ -36,3 +38,28 @@ class ListData(widgets.DOMWidget):
         items = [Button(description=w) for w in sample_words]
         list_box = VBox([items[0], items[1], items[2]])
         display(list_box)
+
+    def display_heading(self, heading):
+        w = widgets.HTML(
+        value="<h3> "+heading+" </h3>"
+        )
+        display(w)
+
+    def create_table(self, input_value ):
+        w = widgets.HTML(
+          value="<h1> "+input_value+" </h1>",
+        )
+        display(w)
+
+    def tabulated_results(self, input_a, input_b):
+        a=range(input_a)
+        b=range(input_b)
+        df = pd.DataFrame()
+        df['Rad. temp']= a # change to read values for Rad. temp column
+        df['Ws']= b # change to read values for Ws
+        df.index = range(1,len(df)+1)
+        df.index.names = ['Shell']
+        return df
+
+    def model_parameters(self, parameters):
+        pass

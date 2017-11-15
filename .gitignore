@@ -4,6 +4,9 @@ dist/
 build/
 *.py[cod]
 node_modules/
+Untitled.ipynb
+Untitled?.ipynb
+Untitled??.ipynb
 
 # Compiled javascript
 simple_widget/static/

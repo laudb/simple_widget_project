@@ -1,6 +1,6 @@
 import ipywidgets as widgets
 import pandas as pd
-from traitlets import Unicode
+from traitlets import Unicode, default, List
 from ipywidgets import Layout, Button, Box, VBox
 from IPython.display import display
 
@@ -51,7 +51,15 @@ class ListData(widgets.DOMWidget):
         )
         display(w)
 
+    def model_parameters(self, parameters):
+        """
+            takes model parameters and displays them
+        """
+
     def tabulated_results(self, input_a, input_b):
+        """
+            should display two respective columns based on two different inputs.
+        """
         a=range(input_a)
         b=range(input_b)
         df = pd.DataFrame()
@@ -61,5 +69,26 @@ class ListData(widgets.DOMWidget):
         df.index.names = ['Shell']
         return df
 
-    def model_parameters(self, parameters):
-        pass
+    def visualized_results(self, input):
+        """
+            takes the model paramters and returns output in a graph form.
+
+            takes input passed from the front end
+
+            plots that into a graph
+        """
+
+class PlotData(widgets.DOMWidget):
+    """A widget for plotting a graph"""
+    _view_name = Unicode('PlotView').tag(sync=True)
+    _model_name = Unicode('PlotModel').tag(sync=True)
+    _view_module = Unicode('simple_widget').tag(sync=True)
+    _model_module = Unicode('simple_widget').tag(sync=True)
+    _model_data = List([]).tag(sync=True)
+
+    @default('layout')
+    def _default_layout(self):
+        return widgets.Layout(height='400px', align_self='stretch')
+
+    def set_data(self, js_data):
+        self._model_data = js_data

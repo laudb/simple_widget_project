@@ -1,6 +1,6 @@
 var widgets = require('@jupyter-widgets/base');
 var _ = require('lodash');
-
+var plotgraph = require('./plotgraph');
 
 // Custom Model. Custom widgets models must at least provide default values
 // for model attributes, including

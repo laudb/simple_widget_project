@@ -80,8 +80,8 @@ class ListData(widgets.DOMWidget):
 
 class PlotData(widgets.DOMWidget):
     """A widget for plotting a graph"""
-    _view_name = Unicode('PlotView').tag(sync=True)
-    _model_name = Unicode('PlotModel').tag(sync=True)
+    _view_name = Unicode('PlotGraphView').tag(sync=True)
+    _model_name = Unicode('PlotGraphModel').tag(sync=True)
     _view_module = Unicode('simple_widget').tag(sync=True)
     _model_module = Unicode('simple_widget').tag(sync=True)
     _model_data = List([]).tag(sync=True)

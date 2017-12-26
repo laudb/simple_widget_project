@@ -82,9 +82,15 @@ var PlotGraphModel = widgets.DOMWidgetModel.extend({
 var PlotGraphView = widgets.DOMWidgetView.extend({
   render: function() {
     this.showData();
+    this.model.on('change:value', this.showData, this);
   },
   showData: function () {
-    this.model.get("_model_data");
+    var data = this.model.get("_model_data");
+    var $myData = $("<div />");
+    $myData
+        .append("<ul />")
+        .html(`<li>${data}</li>`)
+    this.$el.append($myData)
   }
 });
 

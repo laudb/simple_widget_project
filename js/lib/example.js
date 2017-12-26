@@ -85,12 +85,21 @@ var PlotGraphView = widgets.DOMWidgetView.extend({
     this.model.on('change:value', this.showData, this);
   },
   showData: function () {
+    this.showHeader();
     var data = this.model.get("_model_data");
     var $myData = $("<div />");
     $myData
         .append("<ul />")
         .html(`<li>${data}</li>`)
     this.$el.append($myData)
+  },
+  showHeader: function () {
+    var content = "Date and Values"
+    var $heading = $("<div />");
+    $heading
+        .append("<span />")
+        .html(`<h1>${content}</h1>`)
+    this.$el.append($heading)
   }
 });
 

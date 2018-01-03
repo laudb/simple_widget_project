@@ -74,7 +74,8 @@ var PlotGraphModel = widgets.DOMWidgetModel.extend({
     _model_module : 'simple_widget',
     _view_module : 'simple_widget',
     _model_module_version : '0.1.0',
-    _view_module_version: '0.1.0'
+    _view_module_version: '0.1.0',
+    _model_data: []
   })
 });
 
@@ -86,11 +87,17 @@ var PlotGraphView = widgets.DOMWidgetView.extend({
   },
   showData: function () {
     this.showHeader();
-    var data = this.model.get("_model_data");
-    var $myData = $("<div />");
+    var new_data = [];
+    var incoming_data = this.model.get("_model_data");
+    console.log(incoming_data);
+    console.log(typeof incoming_data);
+    new_data.push(incoming_data);
+    var $myData = $("<tbody>");
+    new_data.each(function () {
+      
+    })
     $myData
-        .append("<ul />")
-        .html(`<li>${data}</li>`)
+        .html('<tr><td>'+new_data+'</td></tr>')
     this.$el.append($myData)
   },
   showHeader: function () {

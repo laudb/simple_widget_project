@@ -92,3 +92,4 @@ class PlotData(widgets.DOMWidget):
 
     def set_data(self, js_data):
         self._model_data = js_data
+        print self._model_data

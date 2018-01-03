@@ -92,13 +92,12 @@ var PlotGraphView = widgets.DOMWidgetView.extend({
     console.log(incoming_data);
     console.log(typeof incoming_data);
     new_data.push(incoming_data);
-    var $myData = $("<tbody>");
-    new_data.each(function () {
-      
-    })
-    $myData
-        .html('<tr><td>'+new_data+'</td></tr>')
-    this.$el.append($myData)
+    var $myData = $("<thead>");
+    new_data.forEach(function (new_item) {
+      $myData
+          .html('<tr><th>'+new_item[0][0] +':'+new_item[0][1]+'</th></tr>')
+    });
+    this.$el.append($myData);
   },
   showHeader: function () {
     var content = "Date and Values"
@@ -108,6 +107,7 @@ var PlotGraphView = widgets.DOMWidgetView.extend({
         .html(`<h1>${content}</h1>`)
     this.$el.append($heading)
   }
+
 });
 
 
